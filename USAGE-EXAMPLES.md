@@ -239,8 +239,8 @@ ng build --configuration production
 
 2. Start nginx (Option 1 - from project directory):
 ```bash
-cd /path/to/your/angular-app
-docker compose -f /home/prill/code/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
+cd /path/to/your/app
+docker compose -f /path/to/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
 ```
 
 3. Visit http://localhost:8080
@@ -256,7 +256,7 @@ npm run build
 
 2. Start nginx (Option 2 - using environment variable):
 ```bash
-PROJECT_DIST=/path/to/your/react-app/build docker compose -f /home/prill/code/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
+PROJECT_DIST=/path/to/your/react-app/build docker compose -f /path/to/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
 ```
 
 3. Visit http://localhost:8080
@@ -309,7 +309,7 @@ http {
 
 **Terminal 1 - Start dev stack:**
 ```bash
-cd /home/prill/code/stack-pg-rd-nginx
+cd /path/to/stack-pg-rd-nginx
 docker compose up -d
 ```
 

@@ -40,7 +40,7 @@ docker compose up -d
 Test a production build with nginx (Option 1 - from project directory):
 ```bash
 cd /path/to/your/project
-docker compose -f /home/prill/code/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
+docker compose -f /path/to/stack-pg-rd-nginx/docker-compose.yml --profile production-test up nginx
 ```
 
 Test a production build with nginx (Option 2 - using environment variable):
