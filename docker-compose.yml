@@ -1,0 +1,44 @@
+
+services:
+  # PostgreSQL - Always running for local development
+  postgres:
+    image: postgres:15-alpine
+    container_name: local-postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=devdb
+      - POSTGRES_USER=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Redis - Always running for local development
+  redis:
+    image: redis:7-alpine
+    container_name: local-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # Nginx - Production-like testing ONLY (opt-in with profile)
+  # Use this to test BUILT app before deploying to Mini PC
+  nginx:
+    image: nginx:alpine
+    container_name: local-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount built React/Angular app
+      - ./dist:/usr/share/nginx/html:ro
+      # Optional: custom nginx config
+      # - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    profiles:
+      - production-test
+
+volumes:
+  postgres_data:
+  redis_data:
